@@ -3,6 +3,7 @@ import Card from '@mui/material/Card';
 import CardContent from '@mui/material/CardContent';
 import Box from "@mui/material/Box";
 import axios from '../api';
+import Button from '@mui/material/Button';
 
 
 const Airports = () => {
@@ -25,6 +26,17 @@ const Airports = () => {
     getAirports();
   }, []);
 
+  const deleteAirport = async (id) => {
+      try{
+        const response = await axios.delete('/airports/${id}');
+        console.log("API response:", response);
+        alert("Airport deleted succesfully!");
+        getAirports();
+      }catch(error){
+        console.error(error);
+      }
+  }
+
 
   return (
     <Box display="grid" gridTemplateColumns="repeat(12, 1fr)" gap={2}>
@@ -40,6 +52,10 @@ const Airports = () => {
             Country: {airport.country}
             City: {airport.city}
           </CardContent>
+          <Button variant="outlined" onClick={() => { deleteAirport(airport.id) }}>
+              {" "}
+              delete{" "}
+          </Button>
         </Card>
       </Box>
     ))}
