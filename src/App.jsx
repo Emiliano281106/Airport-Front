@@ -3,15 +3,18 @@ import { BrowserRouter as Router, Route, Routes } from 'react-router-dom';
 import Airports from './components/Airports';
 import Planes from './components/Planes';
 import Flights from './components/Flights';
+import Home from './Home';
+import Sidebar from './Sidebar';
 
 const App = () => {
   return (
     <Router>
+      <Sidebar/>
       <Routes>
         <Route path="/airports" element={<Airports />} />
         <Route path="/planes" element={<Planes />} />
         <Route path="/flights" element={<Flights />} />
-        <Route path="/" element={<Flights />} />
+        <Route path="/" element={<Home />} />
       </Routes>
     </Router>
   );
