@@ -4,6 +4,7 @@ import CardContent from '@mui/material/CardContent';
 import Box from "@mui/material/Box";
 import axios from '../api';
 import Button from '@mui/material/Button';
+import Typography from '@mui/material/Typography';
 
 const Planes = () => {
 
@@ -43,9 +44,9 @@ const Planes = () => {
         >
           <Card>
             <CardContent>
-              {plane.model}
-              Manufacturer: {plane.manufacturer}
-              Capacity: {plane.capacity}
+              <Typography variant="h6" gutterBottom component="div" color="lightgreen" >{plane.model}</Typography>
+             <Typography><strong>Manufacturer:</strong> {plane.manufacturer}</Typography> 
+              <Typography><strong>Capacity:</strong> {plane.capacity}</Typography>
             </CardContent>
             <Button variant="outlined" onClick={() => { deletePlane(plane.id) }}>
               {" "}
