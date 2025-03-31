@@ -47,14 +47,14 @@ const Flights = () => {
         <Card sx={{ maxWidth: 345, margin: 2, boxShadow: 3 }}>
           <CardContent>
             <Typography variant="h6" component="div" gutterBottom>
-              Flight #{flight.flightNumber}
+              <strong>Flight #</strong>{flight.flightNumber}
             </Typography>
             
-            <Typography variant="body1" gutterBottom>
+            <Typography >
               <strong>Departure:</strong> {flight.departureTime}
             </Typography>
             
-            <Typography variant="body1" gutterBottom>
+            <Typography>
               <strong>Arrival:</strong> {flight.arrivalTime}
             </Typography>
             

@@ -40,26 +40,42 @@ const Airports = () => {
 
   return (
     <Box display="grid" gridTemplateColumns="repeat(12, 1fr)" gap={2}>
-    {airports.map((airport) => (
-      <Box
-        gridColumn={{ xs: "span 12", sm: "span 6", md: "span 3" }}
-        key={airport.id}
-      >
-        <Card>
-          <CardContent>
+  {airports.map((airport) => (
+    <Box
+      gridColumn={{ xs: "span 12", sm: "span 6", md: "span 3" }}
+      key={airport.id}
+    >
+      <Card sx={{ maxWidth: 345, margin: 2, boxShadow: 3 }}>
+        <CardContent>
+          <Typography variant="h6" component="div" gutterBottom>
             {airport.name}
-            Code: {airport.code}
-            Country: {airport.country}
-            City: {airport.city}
-          </CardContent>
-          <Button variant="outlined" onClick={() => { deleteAirport(airport.id) }}>
-              {" "}
-              delete{" "}
-          </Button>
-        </Card>
-      </Box>
-    ))}
-  </Box>
+          </Typography>
+          
+          <Typography variant="body1" gutterBottom>
+            <strong>Code:</strong> {airport.code}
+          </Typography>
+          
+          <Typography variant="body1" gutterBottom>
+            <strong>Country:</strong> {airport.country}
+          </Typography>
+          
+          <Typography variant="body1" gutterBottom>
+            <strong>City:</strong> {airport.city}
+          </Typography>
+        </CardContent>
+        
+        <Button 
+          variant="outlined" 
+          color="error"
+          onClick={() => { deleteAirport(airport.id) }}
+          sx={{ margin: 2 }}
+        >
+          Delete Airport
+        </Button>
+      </Card>
+    </Box>
+  ))}
+</Box>
   );
 };
 
