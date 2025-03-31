@@ -28,7 +28,7 @@ const Flights = () => {
 
   const deleteFlight = async (id) => {
     try {
-      const response = await axios.delete(`/flights/${id}`);
+      const response = await axios.delete(`/flights/deleteFlight/${id}`);
       console.log("API response:", response);
       alert("Flight deleted successfully!");
       getFlights();

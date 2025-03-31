@@ -29,7 +29,7 @@ const Airports = () => {
 
   const deleteAirport = async (id) => {
       try{
-        const response = await axios.delete('/airports/${id}');
+        const response = await axios.delete(`/airports/deleteAirport/${id}`);
         console.log("API response:", response);
         alert("Airport deleted succesfully!");
         getAirports();
