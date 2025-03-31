@@ -1,9 +1,12 @@
 import React, { useEffect, useState } from 'react';
-import Card from '@mui/material/Card';
-import CardContent from '@mui/material/CardContent';
-import Box from "@mui/material/Box";
 import axios from '../api';
-import Button from '@mui/material/Button';
+import {
+  Card,
+  CardContent,
+  Typography,
+  Button,
+  Box,
+} from '@mui/material';
 
 const Flights = () => {
 
@@ -36,26 +39,48 @@ const Flights = () => {
 
   return (
     <Box display="grid" gridTemplateColumns="repeat(12, 1fr)" gap={2}>
-      {flights.map((flight) => (
-        <Box
-          gridColumn={{ xs: "span 12", sm: "span 6", md: "span 3" }}
-          key={flight.id}
-        >
-          <Card>
-            <CardContent>
-              {flight.flightNumber}
-              Departure Time: {flight.departureTime}
-              Arrival Time: {flight.arrivalTime}
-              Status: {flight.status}
-            </CardContent>
-            <Button variant="outlined" onClick={() => { deleteFlight(flight.id) }}>
-              {" "}
-              delete{" "}
-            </Button>
-          </Card>
-        </Box>
-      ))}
-    </Box>
+    {flights.map((flight) => (
+      <Box
+        gridColumn={{ xs: "span 12", sm: "span 6", md: "span 3" }}
+        key={flight.id}
+      >
+        <Card sx={{ maxWidth: 345, margin: 2, boxShadow: 3 }}>
+          <CardContent>
+            <Typography variant="h6" component="div" gutterBottom>
+              Flight #{flight.flightNumber}
+            </Typography>
+            
+            <Typography variant="body1" gutterBottom>
+              <strong>Departure:</strong> {flight.departureTime}
+            </Typography>
+            
+            <Typography variant="body1" gutterBottom>
+              <strong>Arrival:</strong> {flight.arrivalTime}
+            </Typography>
+            
+            <Typography variant="body2" sx={{ 
+              color: flight.status === 'ON_TIME' ? 'green' : 
+                    flight.status === 'CANCELLED' ? 'red' : 
+                    flight.status === 'DELAYED' ? 'orange' : 
+                    flight.status === 'SCHEDULED' ? 'blue': ''
+                    
+            }}>
+              <strong>Status:</strong> {flight.status}
+            </Typography>
+          </CardContent>
+          
+          <Button 
+            variant="outlined" 
+            color="error"
+            onClick={() => { deleteFlight(flight.id) }}
+            sx={{ margin: 2 }}
+          >
+            Delete Flight
+          </Button>
+        </Card>
+      </Box>
+    ))}
+  </Box>
   );
 };
 
