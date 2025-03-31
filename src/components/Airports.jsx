@@ -4,6 +4,7 @@ import CardContent from '@mui/material/CardContent';
 import Box from "@mui/material/Box";
 import axios from '../api';
 import Button from '@mui/material/Button';
+import Typography from '@mui/material/Typography';
 
 
 const Airports = () => {
@@ -47,8 +48,8 @@ const Airports = () => {
     >
       <Card sx={{ maxWidth: 345, margin: 2, boxShadow: 3 }}>
         <CardContent>
-          <Typography variant="h6" component="div" gutterBottom>
-            {airport.name}
+          <Typography variant="h6" component="div" gutterBottom color="lightblue"  >
+            <strong>{airport.name}</strong>
           </Typography>
           
           <Typography variant="body1" gutterBottom>
@@ -66,7 +67,7 @@ const Airports = () => {
         
         <Button 
           variant="outlined" 
-          color="error"
+          color="grey"
           onClick={() => { deleteAirport(airport.id) }}
           sx={{ margin: 2 }}
         >
