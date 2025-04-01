@@ -5,6 +5,7 @@ import Planes from './components/Planes';
 import Flights from './components/Flights';
 import Home from './Home';
 import Sidebar from './Sidebar';
+import CreateAirportForm from './components/CreateAirportForm';
 
 const App = () => {
   return (
@@ -14,6 +15,7 @@ const App = () => {
         <Route path="/airports" element={<Airports />} />
         <Route path="/planes" element={<Planes />} />
         <Route path="/flights" element={<Flights />} />
+        <Route path="/airports/create" element={<CreateAirportForm/>}/>
         <Route path="/" element={<Home />} />
       </Routes>
     </Router>
