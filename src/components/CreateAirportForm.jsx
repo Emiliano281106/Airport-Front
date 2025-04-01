@@ -18,7 +18,7 @@ const CreateAirportForm = () => {
         city : "",
     });
 
-    const hnadleChange = (e) => {
+    const handleChange = (e) => {
         const{name,value} = e.target;
         setFormData({...formData, [name] : value});
 
@@ -44,7 +44,7 @@ const CreateAirportForm = () => {
              label="Airport code"
              name="code"
              value={formData.code}
-             onChange={hnadleChange}
+             onChange={handleChange}
              fullWidth
              margin="normal"
              required/>
@@ -53,7 +53,7 @@ const CreateAirportForm = () => {
              label="Airport name"
              name="name"
              value={formData.name}
-             onChange={hnadleChange}
+             onChange={handleChange}
              fullWidth
              margin="normal"
              required/>
@@ -62,7 +62,7 @@ const CreateAirportForm = () => {
              label="Airport country"
              name="country"
              value={formData.country}
-             onChange={hnadleChange}
+             onChange={handleChange}
              fullWidth
              margin="normal"
              required/>
@@ -71,7 +71,7 @@ const CreateAirportForm = () => {
              label="Airport city"
              name="city"
              value={formData.city}
-             onChange={hnadleChange}
+             onChange={handleChange}
              fullWidth
              margin="normal"
              required/>

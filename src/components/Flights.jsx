@@ -7,10 +7,12 @@ import {
   Button,
   Box,
 } from '@mui/material';
+import { useNavigate } from 'react-router-dom';
 
 const Flights = () => {
 
   const [flights, setFlights] = useState([]);
+  const navigate = useNavigate();
 
   const getFlights = async () => {
     try {
@@ -35,6 +37,11 @@ const Flights = () => {
     } catch (error) {
       console.error(error);
     }
+  };
+
+  const createFlight = () => {
+
+    navigate('/flights/create');
   }
 
   return (

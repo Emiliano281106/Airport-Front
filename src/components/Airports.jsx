@@ -48,7 +48,7 @@ const Airports = () => {
 
   return (
     <Box display="grid" gridTemplateColumns="repeat(12, 1fr)" gap={2}>
-    <Button variant='contained'onClick={createAirport} >Create new Airport</Button>
+    <Button variant='contained'onClick={createAirport} sx = {{margin: 2}} >Create new Airport</Button>
   {airports.map((airport) => (
     <Box
       gridColumn={{ xs: "span 12", sm: "span 6", md: "span 3" }}
