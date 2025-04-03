@@ -141,7 +141,7 @@ const CreateFlightForm = () => {
             <Box sx={{ display: "flex", gap: 2 }}>
               <DatePicker
                 label="Departure Date"
-                value={formData.deparureTime}
+                value={formData.departureTime}
                 onChange={(newValue) => handleDateChange("departureTime", newValue)}
                 renderInput={(params) => (
                   <TextField {...params} fullWidth margin="normal" />
