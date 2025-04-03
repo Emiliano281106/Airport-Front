@@ -31,6 +31,7 @@ const CreateFlightForm = () => {
         
     });
     const navigate = useNavigate();
+    const location = useLocation();
     const {planes, airports} = location.state || {};
 
     const handleChange = (e) => {
@@ -158,7 +159,7 @@ const CreateFlightForm = () => {
               margin="normal"
             />
   
-            <Button type="submit" variant="contained" color="primary">
+            <Button type="submit" variant="contained" color="primary" >
               Create Flight
             </Button>
           </form>

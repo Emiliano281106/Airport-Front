@@ -31,7 +31,7 @@ const Flights = () => {
       try {
         const response = await axios.get("/airports/getAirports");
         console.log("API Response:", response);
-        seAirports(response.data || []); 
+        setAirports(response.data || []); 
       } catch (error) {
         console.error(error);
       }
