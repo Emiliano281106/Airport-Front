@@ -13,19 +13,43 @@ const Flights = () => {
 
   const [flights, setFlights] = useState([]);
   const navigate = useNavigate();
-
-  const getFlights = async () => {
-    try {
-      const response = await axios.get("/flights/getFlights");
-      console.log("API Response:", response);
-      setFlights(response.data || []); 
-    } catch (error) {
-      console.error(error);
-    }
-  }
+  const [airports, setAirports] = useState([]);
+  const [planes,setPlanes] = useState([]);
 
   useEffect(() => {
+    const getFlights = async () => {
+      try {
+        const response = await axios.get("/flights/getFlights");
+        console.log("API Response:", response);
+        setFlights(response.data || []); 
+      } catch (error) {
+        console.error(error);
+      }
+    };
+
+    const getAirports = async () => {
+      try {
+        const response = await axios.get("/airports/getAirports");
+        console.log("API Response:", response);
+        setFlights(response.data || []); 
+      } catch (error) {
+        console.error(error);
+      }
+    };
+
+    const getPlanes = async () => {
+      try {
+        const response = await axios.get("/planes/getPlanes");
+        console.log("API Response:", response);
+        setFlights(response.data || []); 
+      } catch (error) {
+        console.error(error);
+      }
+    };
+
     getFlights();
+    getPlanes();
+    getAirports();
   }, []);
 
   const deleteFlight = async (id) => {
@@ -46,6 +70,7 @@ const Flights = () => {
 
   return (
     <Box display="grid" gridTemplateColumns="repeat(12, 1fr)" gap={2}>
+       <Button variant = "outlined" onClick={createFlight}>Create a new flight</Button>
     {flights.map((flight) => (
       <Box
         gridColumn={{ xs: "span 12", sm: "span 6", md: "span 3" }}
