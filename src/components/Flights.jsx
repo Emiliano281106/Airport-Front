@@ -31,7 +31,7 @@ const Flights = () => {
       try {
         const response = await axios.get("/airports/getAirports");
         console.log("API Response:", response);
-        setFlights(response.data || []); 
+        seAirports(response.data || []); 
       } catch (error) {
         console.error(error);
       }
@@ -41,7 +41,7 @@ const Flights = () => {
       try {
         const response = await axios.get("/planes/getPlanes");
         console.log("API Response:", response);
-        setFlights(response.data || []); 
+        setPlanes(response.data || []); 
       } catch (error) {
         console.error(error);
       }
@@ -65,7 +65,7 @@ const Flights = () => {
 
   const createFlight = () => {
 
-    navigate('/flights/create');
+    navigate('/flights/create', {state : {airports, planes}});
   }
 
   return (
