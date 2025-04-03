@@ -25,7 +25,7 @@ const CreateFlightForm = () => {
         departureAirportId : "",
         arrivalAirportId : "",
         planeId : "",
-        deparureTime: dayjs(),
+        departureTime: dayjs(),
         arrivalTime : dayjs(),
         status : "",
         
@@ -49,10 +49,10 @@ const CreateFlightForm = () => {
             const flightData = {
 
                 flightNumber : formData.flightNumber ,
-                departureAirport : {id : formData.departureAirportId} ,
-                arrivalAirport : {id : formData.arrivalAirportId},
-                plane : {id : formData.planeId},
-                deparureTime:formData.deparureTime,
+                departureAirport :formData.departureAirportId ,
+                arrivalAirport : formData.arrivalAirportId,
+                plane : formData.planeId,
+                departureTime:formData.departureTime,
                 arrivalTime : formData.arrivalTime,
                 status : formData.status,
             };
@@ -76,6 +76,14 @@ const CreateFlightForm = () => {
         >
           <h2>Create New Flight</h2>
           <form onSubmit={handleSubmit}>
+            <TextField
+                label="Flight Number"
+                name="flightNumber"
+                value={formData.flightNumber}
+                onChange={handleChange}
+                fullWidth
+                margin="normal"
+                />
             <FormControl fullWidth margin="normal" required>
               <InputLabel id="departureAirport-select-label">Departure Airport</InputLabel>
               <Select
@@ -159,7 +167,7 @@ const CreateFlightForm = () => {
               margin="normal"
             />
   
-            <Button type="submit" variant="contained" color="primary" >
+            <Button type="submit" variant="contained" color="primary" onClick={handleSubmit}>
               Create Flight
             </Button>
           </form>
