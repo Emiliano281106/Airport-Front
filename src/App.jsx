@@ -3,7 +3,7 @@ import { BrowserRouter as Router, Route, Routes } from 'react-router-dom';
 import Airports from './components/Airports/Airports';
 import Flights from './components/Flights/Flights';
 import Planes from './components/Planes/Planes';
-import Home from './Home';
+import Home from './Pages/Home';
 import Sidebar from './components/Layout/Sidebar';
 import CreateAirportForm from './components/Airports/CreateAirportForm';
 import CreateFlightForm from './components/Flights/CreateFligthForm';
