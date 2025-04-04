@@ -7,7 +7,7 @@ import Home from './Home';
 import Sidebar from './Sidebar';
 import CreateAirportForm from './components/CreateAirportForm';
 import CreatePlaneForm from './components/CreatePlaneForm';
-import CreateFlightForm from './components/CreateFligthForm';
+import CreateAirportForm from './components/Airports/CreateAirportForm';
 
 const App = () => {
   return (

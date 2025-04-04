@@ -3,7 +3,7 @@ import Paper from '@mui/material/Paper';
 import TextField from '@mui/material/TextField';
 import React, { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
-import axios from '../api';
+import axios from '../../api';
 import { Box } from '@mui/material';
 
 
