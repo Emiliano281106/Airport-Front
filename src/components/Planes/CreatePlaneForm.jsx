@@ -27,8 +27,7 @@ const CreatePlaneForm = () => {
     const handleSubmit = async (e) => {
 
         try{
-
-            await axios.post('/planes/createPlane', [planeData]);
+            await axios.post('/planes/createPlane', planeData);
             alert("Plane created succesfully!!!");
             navigate('/planes');
         }catch(error){

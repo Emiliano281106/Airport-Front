@@ -18,7 +18,7 @@ const Airports = () => {
 
     try{
       const response = await axios.get("/airports/getAirports");
-      console.log("API Response:", response);
+      console.log("API Response:", response.data);
       setAirports(response.data || []); 
     }catch(error){
       console.error(error);
@@ -48,8 +48,8 @@ const Airports = () => {
 
   return (
     <Box display="grid" gridTemplateColumns="repeat(12, 1fr)" gap={2}>
-    <Button variant='contained'onClick={createAirport} sx = {{margin: 2}} >Create new Airport</Button>
-  {airports.map((airport) => (
+    <Button variant='outlined'onClick={createAirport} sx = {{margin: 2}} >Create new Airport</Button>
+      {airports.map((airport) => (
     <Box
       gridColumn={{ xs: "span 12", sm: "span 6", md: "span 3" }}
       key={airport.id}
@@ -84,6 +84,7 @@ const Airports = () => {
       </Card>
     </Box>
   ))}
+ 
 </Box>
   );
 };
