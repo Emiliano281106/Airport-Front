@@ -49,20 +49,20 @@ const CreateFlightForm = () => {
             const flightData = {
 
                 flightNumber : formData.flightNumber ,
-                departureAirport :formData.departureAirportId ,
-                arrivalAirport : formData.arrivalAirportId,
-                plane : formData.planeId,
+                departureAirport :{id: formData.departureAirportId} ,
+                arrivalAirport : {id : formData.arrivalAirportId},
+                plane : {id : formData.planeId},
                 departureTime:formData.departureTime,
                 arrivalTime : formData.arrivalTime,
                 status : formData.status,
             };
-
+            console.log("Sending:", JSON.stringify(flightData, null, 2));
             await axios.post('/flights/createFlight', flightData);
             alert("Flight created succesfully!!!");
             navigate("/flights");
-        }catch (error){
-            console.log(error);
-            alert("Failed to create flight")
+        }catch (error) {
+          console.error("Full error details:", error.response?.data); 
+          alert(`Failed to create flight: ${error.response?.data?.message || error.message}`);
         }
 
     };
