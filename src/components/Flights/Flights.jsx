@@ -1,13 +1,20 @@
 import React, { useEffect, useState } from 'react';
 import axios from '../../Middleware/api';
 import {
-  Card,
-  CardContent,
   Typography,
   Button,
   Box,
 } from '@mui/material';
 import { useNavigate } from 'react-router-dom';
+import {
+  Table,
+  TableBody,
+  TableCell,
+  TableContainer,
+  TableHead,
+  TableRow,
+  Paper
+} from '@mui/material';
 
 const Flights = () => {
 
@@ -69,51 +76,67 @@ const Flights = () => {
   }
 
   return (
-    <Box display="grid" gridTemplateColumns="repeat(12, 1fr)" gap={2}>
-       <Button variant = "outlined" onClick={createFlight}>Create a new flight</Button>
-    {flights.map((flight) => (
-      <Box
-        gridColumn={{ xs: "span 12", sm: "span 6", md: "span 3" }}
-        key={flight.id}
+    <Box sx={{ width: '100%', p: 2 }}>
+      <Button 
+        variant='outlined' 
+        onClick={createFlight} 
+        sx={{ marginBottom: 2 }}
       >
-        <Card sx={{ maxWidth: 345, margin: 2, boxShadow: 3 }}>
-          <CardContent>
-            <Typography variant="h6" component="div" gutterBottom>
-              <strong>Flight #</strong>{flight.flightNumber}
-            </Typography>
-            
-            <Typography >
-              <strong>Departure:</strong> {flight.departureTime}
-            </Typography>
-            
-            <Typography>
-              <strong>Arrival:</strong> {flight.arrivalTime}
-            </Typography>
-            
-            <Typography variant="body2" sx={{ 
-              color: flight.status === 'ON_TIME' ? 'green' : 
-                    flight.status === 'CANCELLED' ? 'red' : 
-                    flight.status === 'DELAYED' ? 'orange' : 
-                    flight.status === 'SCHEDULED' ? 'blue': ''
-                    
-            }}>
-              <strong>Status:</strong> {flight.status}
-            </Typography>
-          </CardContent>
-          
-          <Button 
-            variant="outlined" 
-            color="error"
-            onClick={() => { deleteFlight(flight.id) }}
-            sx={{ margin: 2 }}
-          >
-            Delete Flight
-          </Button>
-        </Card>
-      </Box>
-    ))}
-  </Box>
+        Create New Flight
+      </Button>
+      
+      <TableContainer component={Paper} sx={{ boxShadow: 3 }}>
+        <Table sx={{ minWidth: 650 }} aria-label="flights table">
+          <TableHead>
+            <TableRow sx={{ backgroundColor: '#f5f5f5' }}>
+              <TableCell><strong>Flight Number</strong></TableCell>
+              <TableCell><strong>Departure</strong></TableCell>
+              <TableCell><strong>Arrival</strong></TableCell>
+              <TableCell><strong>Status</strong></TableCell>
+              <TableCell><strong>Actions</strong></TableCell>
+            </TableRow>
+          </TableHead>
+          <TableBody>
+            {flights.map((flight) => (
+              <TableRow
+                key={flight.id}
+                sx={{ '&:last-child td, &:last-child th': { border: 0 } }}
+              >
+                <TableCell>
+                  <strong>{flight.flightNumber}</strong>
+                </TableCell>
+                <TableCell>{flight.departureTime}</TableCell>
+                <TableCell>{flight.arrivalTime}</TableCell>
+                <TableCell>
+                  <Typography 
+                    sx={{ 
+                      color: flight.status === 'ON_TIME' ? 'green' : 
+                            flight.status === 'CANCELLED' ? 'red' : 
+                            flight.status === 'DELAYED' ? 'orange' : 
+                            flight.status === 'SCHEDULED' ? 'blue' : 'inherit',
+                      fontWeight: 'bold'
+                    }}
+                  >
+                    {flight.status}
+                  </Typography>
+                </TableCell>
+                <TableCell>
+                  <Button 
+                    variant="outlined" 
+                    color="error"
+                    onClick={() => { deleteFlight(flight.id) }}
+                  >
+                    Delete
+                  </Button>
+                </TableCell>
+              </TableRow>
+            ))}
+          </TableBody>
+        </Table>
+      </TableContainer>
+    </Box>
   );
 };
+
 
 export default Flights;
