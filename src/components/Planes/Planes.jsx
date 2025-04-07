@@ -1,11 +1,18 @@
 import React, { useEffect, useState } from 'react';
-import Card from '@mui/material/Card';
-import CardContent from '@mui/material/CardContent';
 import Box from "@mui/material/Box";
 import axios from '../../Middleware/api';
 import Button from '@mui/material/Button';
 import Typography from '@mui/material/Typography';
 import { useNavigate } from 'react-router-dom';
+import {
+  Table,
+  TableBody,
+  TableCell,
+  TableContainer,
+  TableHead,
+  TableRow,
+  Paper
+} from '@mui/material';
 
 const Planes = () => {
 
@@ -43,29 +50,56 @@ const Planes = () => {
   }
 
   return (
-    <Box display="grid" gridTemplateColumns="repeat(12, 1fr)" gap={2}>
-       <Button variant = "outlined" onClick={createPlane}>Create a new plane</Button>
-      {planes.map((plane) => (
-        <Box
-          gridColumn={{ xs: "span 12", sm: "span 6", md: "span 3" }}
-          key={plane.id}
-        >
-         
-          <Card>
-            <CardContent>
-              <Typography variant="h6" gutterBottom component="div" color="lightgreen" >{plane.model}</Typography>
-             <Typography><strong>Manufacturer:</strong> {plane.manufacturer}</Typography> 
-              <Typography><strong>Capacity:</strong> {plane.capacity}</Typography>
-            </CardContent>
-            <Button variant="outlined" onClick={() => { deletePlane(plane.id) }}>
-              {" "}
-              delete{" "}
-            </Button>
-          </Card>
-        </Box>
-      ))}
+    <Box sx={{ width: '100%', p: 2 }}>
+      <Button 
+        variant='outlined' 
+        onClick={createPlane} 
+        sx={{ marginBottom: 2 }}
+      >
+        Create New Plane
+      </Button>
+      
+      <TableContainer component={Paper} sx={{ boxShadow: 3 }}>
+        <Table sx={{ minWidth: 650 }} aria-label="planes table">
+          <TableHead>
+            <TableRow sx={{ backgroundColor: '#f5f5f5' }}>
+              <TableCell><strong>Model</strong></TableCell>
+              <TableCell><strong>Manufacturer</strong></TableCell>
+              <TableCell><strong>Capacity</strong></TableCell>
+              <TableCell><strong>Actions</strong></TableCell>
+            </TableRow>
+          </TableHead>
+          <TableBody>
+            {planes.map((plane) => (
+              <TableRow
+                key={plane.id}
+                sx={{ '&:last-child td, &:last-child th': { border: 0 } }}
+              >
+                <TableCell>
+                  <Typography color="black">
+                    <strong>{plane.model}</strong>
+                  </Typography>
+                </TableCell>
+                <TableCell>{plane.manufacturer}</TableCell>
+                <TableCell>{plane.capacity}</TableCell>
+                <TableCell>
+                  <Button 
+                    variant="outlined" 
+                    color="error"
+                    onClick={() => { deletePlane(plane.id) }}
+                  >
+                    Delete
+                  </Button>
+                </TableCell>
+              </TableRow>
+            ))}
+          </TableBody>
+        </Table>
+      </TableContainer>
     </Box>
   );
 };
+
+
 
 export default Planes;
