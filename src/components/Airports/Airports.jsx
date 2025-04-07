@@ -52,12 +52,25 @@ const Airports = () => {
     navigate('/airports/create')
   }
 
+  const updateAirport = () => {
+    navigate('/airports/update')
+  }
+
   return (
     <Box sx={{ width: '100%', p: 2 }}>
       <Button 
-        variant='outlined' 
+        variant='contained' 
         onClick={createAirport} 
-        sx={{ marginBottom: 2 }}
+        sx={{ 
+          marginBottom: 2,
+          bgcolor: 'primary.main',
+          '&:hover': {
+            bgcolor: 'primary.dark',
+            transform: 'translateY(-1px)'
+          },
+          transition: 'all 0.2s ease-in-out',
+          boxShadow: 1
+        }}
       >
         Create new Airport
       </Button>
@@ -87,13 +100,36 @@ const Airports = () => {
                 <TableCell>{airport.code}</TableCell>
                 <TableCell>{airport.country}</TableCell>
                 <TableCell>{airport.city}</TableCell>
-                <TableCell>
+                <TableCell sx={{ display: 'flex', gap: 1 }}>
                   <Button 
-                    variant="outlined" 
+                    variant="contained" 
                     color="error"
                     onClick={() => { deleteAirport(airport.id) }}
+                    sx={{
+                      '&:hover': {
+                        bgcolor: 'error.dark',
+                        transform: 'translateY(-1px)'
+                      },
+                      transition: 'all 0.2s ease-in-out',
+                      boxShadow: 1
+                    }}
                   >
                     Delete
+                  </Button>
+                  <Button 
+                    variant="contained" 
+                    color="secondary"
+                    onClick={() => { updateAirport(airport.id) }}
+                    sx={{
+                      '&:hover': {
+                        bgcolor: 'secondary.dark',
+                        transform: 'translateY(-1px)'
+                      },
+                      transition: 'all 0.2s ease-in-out',
+                      boxShadow: 1
+                    }}
+                  >
+                    Update
                   </Button>
                 </TableCell>
               </TableRow>

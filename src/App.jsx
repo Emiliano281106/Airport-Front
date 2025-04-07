@@ -8,6 +8,7 @@ import Sidebar from './components/Layout/Sidebar';
 import CreateAirportForm from './components/Airports/CreateAirportForm';
 import CreateFlightForm from './components/Flights/CreateFligthForm';
 import CreatePlaneForm from './components/Planes/CreatePlaneForm';
+import UpdateAirportForm from './components/Airports/UpdateAirportForm';
 
 
 const App = () => {
@@ -17,10 +18,11 @@ const App = () => {
       <Routes>
         <Route path="/airports" element={<Airports />} />
         <Route path="/planes" element={<Planes />} />
-        <Route path="/planes/create" element={<CreatePlaneForm />} />
         <Route path="/flights" element={<Flights />} />
+        <Route path="/planes/create" element={<CreatePlaneForm />} />
         <Route path="/flights/create" element={<CreateFlightForm />} />
         <Route path="/airports/create" element={<CreateAirportForm/>}/>
+        <Route path="/airports/update" element={<UpdateAirportForm />} />
         <Route path="/" element={<Home />} />
       </Routes>
     </Router>
