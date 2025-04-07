@@ -1,11 +1,18 @@
 import React, { useEffect, useState } from 'react';
-import Card from '@mui/material/Card';
-import CardContent from '@mui/material/CardContent';
 import Box from "@mui/material/Box";
 import axios from '../../Middleware/api';
 import Button from '@mui/material/Button';
 import Typography from '@mui/material/Typography';
 import { useNavigate } from 'react-router-dom';
+import {
+  Table,
+  TableBody,
+  TableCell,
+  TableContainer,
+  TableHead,
+  TableRow,
+  Paper
+} from '@mui/material';
 
 
 
@@ -45,47 +52,56 @@ const Airports = () => {
     navigate('/airports/create')
   }
 
-
   return (
-    <Box display="grid" gridTemplateColumns="repeat(12, 1fr)" gap={2}>
-    <Button variant='outlined'onClick={createAirport} sx = {{margin: 2}} >Create new Airport</Button>
-      {airports.map((airport) => (
-    <Box
-      gridColumn={{ xs: "span 12", sm: "span 6", md: "span 3" }}
-      key={airport.id}
-    >
-      <Card sx={{ maxWidth: 345, margin: 2, boxShadow: 3 }}>
-        <CardContent>
-          <Typography variant="h6" component="div" gutterBottom color="lightblue"  >
-            <strong>{airport.name}</strong>
-          </Typography>
-          
-          <Typography variant="body1" gutterBottom>
-            <strong>Code:</strong> {airport.code}
-          </Typography>
-          
-          <Typography variant="body1" gutterBottom>
-            <strong>Country:</strong> {airport.country}
-          </Typography>
-          
-          <Typography variant="body1" gutterBottom>
-            <strong>City:</strong> {airport.city}
-          </Typography>
-        </CardContent>
-        
-        <Button 
-          variant="outlined" 
-          color="grey"
-          onClick={() => { deleteAirport(airport.id) }}
-          sx={{ margin: 2 }}
-        >
-          Delete Airport
-        </Button>
-      </Card>
+    <Box sx={{ width: '100%', p: 2 }}>
+      <Button 
+        variant='outlined' 
+        onClick={createAirport} 
+        sx={{ marginBottom: 2 }}
+      >
+        Create new Airport
+      </Button>
+      
+      <TableContainer component={Paper} sx={{ boxShadow: 3 }}>
+        <Table sx={{ minWidth: 650 }} aria-label="airports table">
+          <TableHead>
+            <TableRow sx={{ backgroundColor: '#f5f5f5' }}>
+              <TableCell><strong>Name</strong></TableCell>
+              <TableCell><strong>Code</strong></TableCell>
+              <TableCell><strong>Country</strong></TableCell>
+              <TableCell><strong>City</strong></TableCell>
+              <TableCell><strong>Actions</strong></TableCell>
+            </TableRow>
+          </TableHead>
+          <TableBody>
+            {airports.map((airport) => (
+              <TableRow
+                key={airport.id}
+                sx={{ '&:last-child td, &:last-child th': { border: 0 } }}
+              >
+                <TableCell>
+                  <Typography color="black">
+                    <strong>{airport.name}</strong>
+                  </Typography>
+                </TableCell>
+                <TableCell>{airport.code}</TableCell>
+                <TableCell>{airport.country}</TableCell>
+                <TableCell>{airport.city}</TableCell>
+                <TableCell>
+                  <Button 
+                    variant="outlined" 
+                    color="error"
+                    onClick={() => { deleteAirport(airport.id) }}
+                  >
+                    Delete
+                  </Button>
+                </TableCell>
+              </TableRow>
+            ))}
+          </TableBody>
+        </Table>
+      </TableContainer>
     </Box>
-  ))}
- 
-</Box>
   );
 };
 
