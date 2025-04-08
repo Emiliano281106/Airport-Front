@@ -7,16 +7,13 @@ import {
   Box,
   Grid,
   Chip,
-  Button
 } from '@mui/material';
 import {
   FlightTakeoff,
-  AirportShuttle,
   AirplanemodeActive,
-  Flight,
-  RocketLaunch
 } from '@mui/icons-material';
-
+import LocationCityIcon from '@mui/icons-material/LocationCity';
+import ConnectingAirportsIcon from '@mui/icons-material/ConnectingAirports';
 const Home = () => {
   return (
     <Container maxWidth="lg" sx={{ py: 4 }}>
@@ -94,7 +91,7 @@ const Home = () => {
               </Typography>
               <Box sx={{ display: 'flex', gap: 2 }}>
                 <Chip 
-                  icon={<AirportShuttle />} 
+                  icon={< LocationCityIcon/>} 
                   label="Airports" 
                   color="primary" 
                   variant="outlined" 
@@ -106,7 +103,7 @@ const Home = () => {
                   variant="outlined" 
                 />
                 <Chip 
-                  icon={<Flight />} 
+                  icon={<ConnectingAirportsIcon />} 
                   label="Flights" 
                   color="success" 
                   variant="outlined" 
