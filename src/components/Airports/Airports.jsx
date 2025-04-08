@@ -53,7 +53,7 @@ const Airports = () => {
   }
 
   const updateAirport = () => {
-    navigate('/airports/update')
+    navigate('/airports/update' , {state : {airports}})
   }
 
   return (
