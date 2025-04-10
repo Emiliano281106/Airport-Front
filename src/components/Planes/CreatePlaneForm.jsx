@@ -25,15 +25,16 @@ const CreatePlaneForm = () => {
     };
 
     const handleSubmit = async (e) => {
-
-        try{
+        e.preventDefault();
+        console.log("Submitting plane data:", planeData);
+        try {
             await axios.post('/planes/createPlane', planeData);
-            alert("Plane created succesfully!!!");
+            alert("Plane created successfully!");
             navigate('/planes');
-        }catch(error){
-            console.error(error);
+        } catch (error) {
+            console.error("Error creating plane:", error.response?.data || error.message);
+            alert(`Error: ${error.response?.data?.message || "Failed to create plane. Please check your input."}`);
         }
-
     };
 
     return(
