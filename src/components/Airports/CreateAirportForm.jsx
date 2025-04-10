@@ -1,6 +1,8 @@
 import Button from '@mui/material/Button';
 import Paper from '@mui/material/Paper';
 import TextField from '@mui/material/TextField';
+import Grid from '@mui/material/Grid'; 
+import Typography from '@mui/material/Typography'; 
 import React, { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import axios from '../../Middleware/api';
@@ -37,46 +39,51 @@ const CreateAirportForm = () => {
         
     };
 
-    return(
-
-        <Paper>
-            <TextField
-             label="Airport code"
-             name="code"
-             value={formData.code}
-             onChange={handleChange}
-             fullWidth
-             margin="normal"
-             required/>
-
-            <TextField
-             label="Airport name"
-             name="name"
-             value={formData.name}
-             onChange={handleChange}
-             fullWidth
-             margin="normal"
-             required/>
-            
-             <TextField
-             label="Airport country"
-             name="country"
-             value={formData.country}
-             onChange={handleChange}
-             fullWidth
-             margin="normal"
-             required/>
-
-            <TextField
-             label="Airport city"
-             name="city"
-             value={formData.city}
-             onChange={handleChange}
-             fullWidth
-             margin="normal"
-             required/>
-            <Button type = "submit" onClick={handleSubmit}>Create Airport</Button>
-        </Paper>
+    return (
+        <div style={{ display: 'flex', justifyContent: 'center', alignItems: 'center', minHeight: '100vh', }}>
+            <Paper elevation={3} style={{ padding: '30px', maxWidth: '500px', width: '100%' }}>
+                <Typography variant="h5" align="center" gutterBottom>
+                    Create New Airport
+                </Typography>
+                <form onSubmit={handleSubmit} style={{ display: 'flex', flexDirection: 'column', gap: '20px' }}>
+                    <TextField
+                        label="Airport Code"
+                        name="code"
+                        value={formData.code}
+                        onChange={handleChange}
+                        fullWidth
+                        required
+                    />
+                    <TextField
+                        label="Airport Name"
+                        name="name"
+                        value={formData.name}
+                        onChange={handleChange}
+                        fullWidth
+                        required
+                    />
+                    <TextField
+                        label="Airport Country"
+                        name="country"
+                        value={formData.country}
+                        onChange={handleChange}
+                        fullWidth
+                        required
+                    />
+                    <TextField
+                        label="Airport City"
+                        name="city"
+                        value={formData.city}
+                        onChange={handleChange}
+                        fullWidth
+                        required
+                    />
+                     <Button variant="contained" color="primary" type="submit" style={{ alignSelf: 'center' }}>
+                        Create Airport
+                    </Button>
+                </form>
+            </Paper>
+        </div>
     );
 }
 
