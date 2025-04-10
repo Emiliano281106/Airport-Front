@@ -80,12 +80,21 @@ const Flights = () => {
   return (
     <Box sx={{ width: '100%', p: 2 }}>
       <Button 
-        variant='outlined' 
-        onClick={createFlight} 
-        sx={{ marginBottom: 2 }}
-      >
-        Create New Flight
-      </Button>
+              variant='contained' 
+              onClick={createFlight} 
+              sx={{ 
+                marginBottom: 2,
+                bgcolor: 'primary.main',
+                '&:hover': {
+                  bgcolor: 'primary.dark',
+                  transform: 'translateY(-1px)'
+                },
+                transition: 'all 0.2s ease-in-out',
+                boxShadow: 1
+              }}
+            >
+              Create new flight
+            </Button>
       
       <TableContainer component={Paper} sx={{ boxShadow: 3 }}>
         <Table sx={{ minWidth: 650 }} aria-label="flights table">

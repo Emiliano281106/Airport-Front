@@ -73,11 +73,20 @@ const Planes = () => {
   return (
     <Box sx={{ width: '100%', p: 2 }}>
       <Button 
-        variant='outlined' 
+        variant='contained' 
         onClick={createPlane} 
-        sx={{ marginBottom: 2 }}
+        sx={{ 
+          marginBottom: 2,
+          bgcolor: 'primary.main',
+          '&:hover': {
+            bgcolor: 'primary.dark',
+            transform: 'translateY(-1px)'
+          },
+          transition: 'all 0.2s ease-in-out',
+          boxShadow: 1
+        }}
       >
-        Create New Plane
+        Create new Plane
       </Button>
       
       <TableContainer component={Paper} sx={{ boxShadow: 3 }}>
