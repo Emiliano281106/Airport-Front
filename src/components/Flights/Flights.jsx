@@ -23,16 +23,18 @@ const Flights = () => {
   const [airports, setAirports] = useState([]);
   const [planes,setPlanes] = useState([]);
 
+  const getFlights = async () => {
+    try {
+      const response = await axios.get("/flights/getFlights");
+      console.log("API Response:", response);
+      setFlights(response.data || []); 
+    } catch (error) {
+      console.error(error);
+    }
+  };
+
   useEffect(() => {
-    const getFlights = async () => {
-      try {
-        const response = await axios.get("/flights/getFlights");
-        console.log("API Response:", response);
-        setFlights(response.data || []); 
-      } catch (error) {
-        console.error(error);
-      }
-    };
+
 
     const getAirports = async () => {
       try {
