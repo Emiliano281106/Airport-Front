@@ -73,10 +73,6 @@ const UpdateAirportForm = () => {
             </form>
         </Paper>
     );
-    return(
-        <>
-        </>
-    );
 }
 
 export default UpdateAirportForm

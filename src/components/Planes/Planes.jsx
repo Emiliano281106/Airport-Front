@@ -49,6 +49,17 @@ const Planes = () => {
     navigate('/planes/create');
   }
 
+  const updatePlane = (id) => {
+    const plane = planes.find(plane => plane.id === id);
+    console.log("Response" ,plane);
+    if (!plane) {
+      console.error("Plane not found");
+      return;
+    }
+    navigate(`/planes/update/${id}`, { state: { plane } });
+  }
+
+
   return (
     <Box sx={{ width: '100%', p: 2 }}>
       <Button 
@@ -83,12 +94,35 @@ const Planes = () => {
                 <TableCell>{plane.manufacturer}</TableCell>
                 <TableCell>{plane.capacity}</TableCell>
                 <TableCell>
-                  <Button 
-                    variant="outlined" 
+                <Button 
+                    variant="contained" 
                     color="error"
                     onClick={() => { deletePlane(plane.id) }}
+                    sx={{
+                      '&:hover': {
+                        bgcolor: 'error.dark',
+                        transform: 'translateY(-1px)'
+                      },
+                      transition: 'all 0.2s ease-in-out',
+                      boxShadow: 1
+                    }}
                   >
                     Delete
+                  </Button>
+                  <Button 
+                    variant="contained" 
+                    color="secondary"
+                    onClick={() => { updatePlane(plane.id) }}
+                    sx={{
+                      '&:hover': {
+                        bgcolor: 'secondary.dark',
+                        transform: 'translateY(-1px)'
+                      },
+                      transition: 'all 0.2s ease-in-out',
+                      boxShadow: 1
+                    }}
+                  >
+                    Update
                   </Button>
                 </TableCell>
               </TableRow>
