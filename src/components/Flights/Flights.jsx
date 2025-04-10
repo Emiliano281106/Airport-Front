@@ -120,15 +120,53 @@ const Flights = () => {
                     {flight.status}
                   </Typography>
                 </TableCell>
-                <TableCell>
-                  <Button 
-                    variant="outlined" 
-                    color="error"
-                    onClick={() => { deleteFlight(flight.id) }}
-                  >
-                    Delete
-                  </Button>
-                </TableCell>
+                <TableCell sx={{ display: 'flex', gap: 1 }}>
+                <Button 
+                  variant="contained" 
+                  sx={{
+                    bgcolor: 'error.light', // Softer red tone
+                    '&:hover': {
+                      bgcolor: 'error.main',
+                      transform: 'translateY(-1px)'
+                    },
+                    transition: 'all 0.2s ease-in-out',
+                    boxShadow: 1
+                  }}
+                  onClick={() => { deleteFlight(flight.id) }}
+                >
+                  Delete
+                </Button>
+                <Button 
+                  variant="contained" 
+                  sx={{
+                    bgcolor: 'info.light', // Softer blue tone
+                    '&:hover': {
+                      bgcolor: 'info.main',
+                      transform: 'translateY(-1px)'
+                    },
+                    transition: 'all 0.2s ease-in-out',
+                    boxShadow: 1
+                  }}
+                  onClick={() => { updateFlight(flight.id) }}
+                >
+                  Update
+                </Button>
+                <Button 
+                  variant="contained" 
+                  sx={{
+                    bgcolor: 'success.light', // Softer green tone
+                    '&:hover': {
+                      bgcolor: 'success.main',
+                      transform: 'translateY(-1px)'
+                    },
+                    transition: 'all 0.2s ease-in-out',
+                    boxShadow: 1
+                  }}
+                  onClick={() => { detailsFlight(flight.id) }}
+                >
+                  Details
+                </Button>
+              </TableCell>
               </TableRow>
             ))}
           </TableBody>
