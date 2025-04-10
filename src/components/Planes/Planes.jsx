@@ -59,6 +59,16 @@ const Planes = () => {
     navigate(`/planes/update/${id}`, { state: { plane } });
   }
 
+  const detailsPlane = (id) => {
+    const plane = planes.find(plane => plane.id === id);
+    console.log("Response" ,plane);
+    if (!plane) {
+      console.error("Plane not found");
+      return;
+    }
+    navigate(`/planes/details/${id}`, { state: { plane } });
+  }
+
 
   return (
     <Box sx={{ width: '100%', p: 2 }}>

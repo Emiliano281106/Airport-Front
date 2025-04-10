@@ -6,35 +6,38 @@ import {
   Typography,
   Button,
 } from "@mui/material";
+const PlaneDetails = () => {
 
-const AirportDetails = () => {
     const location = useLocation();
-    const airport = location.state?.airport || {};
+    const plane = location.state?.plane || {};
     const navigate = useNavigate();
 
     const handleBackClick = () => {
-        navigate(-1); // Go back to the previous page
-      };
+        navigate(-1); 
+      }
 
-    
-    return(
+    return (
         <Card sx={{ maxWidth: 345, margin: "20px auto" }}>
       <CardContent>
         <Typography gutterBottom variant="h5" component="div">
-          {airport.name}
+          {plane.model}
         </Typography>
         <Typography variant="body2" color="text.secondary">
-          Location: {airport.country} , {airport.city}
+          Model: {plane.manufacturer}
         </Typography>
         <Typography variant="body2" color="text.secondary">
-          Code: {airport.code}
+          Capacity: {plane.capacity}
         </Typography>
+        <Typography variant="body2" color="text.secondary">
+          Year of manufacture: {plane.yearOfManufacture}  
+        </Typography>      
       </CardContent>
       <Button size="small" onClick={handleBackClick}>
         Back
       </Button>
     </Card>
+
     );
 }
 
-export default AirportDetails
+export default PlaneDetails;
