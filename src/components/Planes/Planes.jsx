@@ -93,38 +93,53 @@ const Planes = () => {
                 </TableCell>
                 <TableCell>{plane.manufacturer}</TableCell>
                 <TableCell>{plane.capacity}</TableCell>
-                <TableCell>
+                <TableCell sx={{ display: 'flex', gap: 1 }}>
                 <Button 
-                    variant="contained" 
-                    color="error"
-                    onClick={() => { deletePlane(plane.id) }}
-                    sx={{
-                      '&:hover': {
-                        bgcolor: 'error.dark',
-                        transform: 'translateY(-1px)'
-                      },
-                      transition: 'all 0.2s ease-in-out',
-                      boxShadow: 1
-                    }}
-                  >
-                    Delete
-                  </Button>
-                  <Button 
-                    variant="contained" 
-                    color="secondary"
-                    onClick={() => { updatePlane(plane.id) }}
-                    sx={{
-                      '&:hover': {
-                        bgcolor: 'secondary.dark',
-                        transform: 'translateY(-1px)'
-                      },
-                      transition: 'all 0.2s ease-in-out',
-                      boxShadow: 1
-                    }}
-                  >
-                    Update
-                  </Button>
-                </TableCell>
+                  variant="contained" 
+                  sx={{
+                    bgcolor: 'error.light', // Softer red tone
+                    '&:hover': {
+                      bgcolor: 'error.main',
+                      transform: 'translateY(-1px)'
+                    },
+                    transition: 'all 0.2s ease-in-out',
+                    boxShadow: 1
+                  }}
+                  onClick={() => { deletePlane(plane.id) }}
+                >
+                  Delete
+                </Button>
+                <Button 
+                  variant="contained" 
+                  sx={{
+                    bgcolor: 'info.light', // Softer blue tone
+                    '&:hover': {
+                      bgcolor: 'info.main',
+                      transform: 'translateY(-1px)'
+                    },
+                    transition: 'all 0.2s ease-in-out',
+                    boxShadow: 1
+                  }}
+                  onClick={() => { updatePlane(plane.id) }}
+                >
+                  Update
+                </Button>
+                <Button 
+                  variant="contained" 
+                  sx={{
+                    bgcolor: 'success.light', // Softer green tone
+                    '&:hover': {
+                      bgcolor: 'success.main',
+                      transform: 'translateY(-1px)'
+                    },
+                    transition: 'all 0.2s ease-in-out',
+                    boxShadow: 1
+                  }}
+                  onClick={() => { detailsPlane(plane.id) }}
+                >
+                  Details
+                </Button>
+              </TableCell>
               </TableRow>
             ))}
           </TableBody>
