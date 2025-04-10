@@ -21,8 +21,8 @@ const UpdateAirportForm = () => {
     const handleSubmit = async (e) => {
         e.preventDefault();
         try {
-            await axios.put(`/airports/updateAirport/${airport.id}`, formData);
-           
+            const response = await axios.put(`/airports/updateAirport/${airport.id}`, formData);
+            console.log("API Response:", response);
             alert("Airport updated successfully!!!");
             navigate("/airports");
         } catch (error) {

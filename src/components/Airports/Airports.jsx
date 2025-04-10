@@ -52,8 +52,13 @@ const Airports = () => {
     navigate('/airports/create')
   }
 
-  const updateAirport = () => {
-    navigate('/airports/update' , {state : {airports}})
+  const updateAirport = (id) => {
+    const airport = airports.find(airport => airport.id === id);
+    if (!airport) {
+      console.error("Airport not found");
+      return;
+    }
+    navigate(`/airports/update/${id}` , {state : {airport}})
   }
 
   return (
