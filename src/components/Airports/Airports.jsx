@@ -61,6 +61,15 @@ const Airports = () => {
     navigate(`/airports/update/${id}` , {state : {airport}})
   }
 
+  const detailsAirport = (id) => {
+    const airport = airports.find(airport => airport.id === id);
+    if (!airport) {
+      console.error("Airport not found");
+      return;
+    }
+    navigate(`/airports/details/${id}` , {state : {airport}})
+  }
+
   return (
     <Box sx={{ width: '100%', p: 2 }}>
       <Button 
@@ -106,37 +115,53 @@ const Airports = () => {
                 <TableCell>{airport.country}</TableCell>
                 <TableCell>{airport.city}</TableCell>
                 <TableCell sx={{ display: 'flex', gap: 1 }}>
-                  <Button 
-                    variant="contained" 
-                    color="error"
-                    onClick={() => { deleteAirport(airport.id) }}
-                    sx={{
-                      '&:hover': {
-                        bgcolor: 'error.dark',
-                        transform: 'translateY(-1px)'
-                      },
-                      transition: 'all 0.2s ease-in-out',
-                      boxShadow: 1
-                    }}
-                  >
-                    Delete
-                  </Button>
-                  <Button 
-                    variant="contained" 
-                    color="secondary"
-                    onClick={() => { updateAirport(airport.id) }}
-                    sx={{
-                      '&:hover': {
-                        bgcolor: 'secondary.dark',
-                        transform: 'translateY(-1px)'
-                      },
-                      transition: 'all 0.2s ease-in-out',
-                      boxShadow: 1
-                    }}
-                  >
-                    Update
-                  </Button>
-                </TableCell>
+                <Button 
+                  variant="contained" 
+                  sx={{
+                    bgcolor: 'error.light', // Softer red tone
+                    '&:hover': {
+                      bgcolor: 'error.main',
+                      transform: 'translateY(-1px)'
+                    },
+                    transition: 'all 0.2s ease-in-out',
+                    boxShadow: 1
+                  }}
+                  onClick={() => { deleteAirport(airport.id) }}
+                >
+                  Delete
+                </Button>
+                <Button 
+                  variant="contained" 
+                  sx={{
+                    bgcolor: 'info.light', // Softer blue tone
+                    '&:hover': {
+                      bgcolor: 'info.main',
+                      transform: 'translateY(-1px)'
+                    },
+                    transition: 'all 0.2s ease-in-out',
+                    boxShadow: 1
+                  }}
+                  onClick={() => { updateAirport(airport.id) }}
+                >
+                  Update
+                </Button>
+                <Button 
+                  variant="contained" 
+                  sx={{
+                    bgcolor: 'success.light', // Softer green tone
+                    '&:hover': {
+                      bgcolor: 'success.main',
+                      transform: 'translateY(-1px)'
+                    },
+                    transition: 'all 0.2s ease-in-out',
+                    boxShadow: 1
+                  }}
+                  onClick={() => { detailsAirport(airport.id) }}
+                >
+                  Details
+                </Button>
+              </TableCell>
+   
               </TableRow>
             ))}
           </TableBody>
