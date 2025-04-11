@@ -24,10 +24,10 @@ const AirportDetails = () => {
           {airport.name}
         </Typography>
         <Typography variant="body2" color="text.secondary">
-          Location: {airport.country} , {airport.city}
+          <strong>Location:</strong> {airport.country} , {airport.city}
         </Typography>
         <Typography variant="body2" color="text.secondary">
-          Code: {airport.code}
+          <strong>Code:</strong> {airport.code}
         </Typography>
       </CardContent>
       <Button size="small" onClick={handleBackClick}>

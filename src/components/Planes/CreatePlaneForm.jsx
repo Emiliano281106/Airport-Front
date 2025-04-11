@@ -4,7 +4,7 @@ import TextField from '@mui/material/TextField';
 import React, { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import axios from '../../Middleware/api';
-import { Box } from '@mui/material';
+import Typography from '@mui/material/Typography';
 
 
 const CreatePlaneForm = () => {
@@ -37,47 +37,51 @@ const CreatePlaneForm = () => {
         }
     };
 
-    return(
-        <Paper>
-            <Box>
-                <TextField
-                 label="Plane model"
-                 name="model"
-                 value={planeData.model}
-                 onChange={handleChange}
-                 fullWidth
-                 margin="normal"
-                 required/>
-
-                  <TextField
-                 label="Plane manufacturer"
-                 name="manufacturer"
-                 value={planeData.manufacturer}
-                 onChange={handleChange}
-                 fullWidth
-                 margin="normal"
-                 required/>
-
-                  <TextField
-                 label="Plane capacity"
-                 name="capacity"
-                 value={planeData.capacity}
-                 onChange={handleChange}
-                 fullWidth
-                 margin="normal"
-                 required/>
-
-                  <TextField
-                 label="Planes year of manufacture"
-                 name="yearOfManufacture"
-                 value={planeData.yearOfManufacture}
-                 onChange={handleChange}
-                 fullWidth
-                 margin="normal"
-                 required/>
-                 <Button variant="outlined" type = "submit" onClick={handleSubmit}>Create plane</Button>
-            </Box>
-        </Paper>
+    return (
+        <div style={{ display: 'flex', justifyContent: 'center', alignItems: 'center', minHeight: '100vh' }}>
+            <Paper elevation={3} style={{ padding: '30px', maxWidth: '500px', width: '100%' }}>
+                <Typography variant="h5" align="center" gutterBottom>
+                    Create New Airport
+                </Typography>
+                <form onSubmit={handleSubmit} style={{ display: 'flex', flexDirection: 'column', gap: '20px' }}>
+                    <TextField
+                        label="Airport Code"
+                        name="code"
+                        value={planeData.code}
+                        onChange={handleChange}
+                        fullWidth
+                        required
+                    />
+                    <TextField
+                        label="Airport Name"
+                        name="name"
+                        value={planeData.name}
+                        onChange={handleChange}
+                        fullWidth
+                        required
+                    />
+                    <TextField
+                        label="Airport Country"
+                        name="country"
+                        value={planeData.country}
+                        onChange={handleChange}
+                        fullWidth
+                        required
+                    />
+                       <TextField
+                        label="Airport City"
+                        name="city"
+                        value={planeData.city}
+                        onChange={handleChange}
+                        fullWidth
+                        required
+                    />
+                    <Button variant="contained" color="primary" type="submit" style={{ alignSelf: 'center' }}>
+                        Create Airport
+                    </Button>
+                </form>
+            </Paper>
+        </div>
     );
 }
 

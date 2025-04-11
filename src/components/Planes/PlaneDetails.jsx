@@ -23,13 +23,13 @@ const PlaneDetails = () => {
           {plane.model}
         </Typography>
         <Typography variant="body2" color="text.secondary">
-          Model: {plane.manufacturer}
+          <strong>Model:</strong> {plane.manufacturer}
         </Typography>
         <Typography variant="body2" color="text.secondary">
-          Capacity: {plane.capacity}
+          <strong>Capacity:</strong> {plane.capacity}
         </Typography>
         <Typography variant="body2" color="text.secondary">
-          Year of manufacture: {plane.yearOfManufacture}  
+          <strong>Year of manufacture:</strong> {plane.yearOfManufacture}  
         </Typography>      
       </CardContent>
       <Button size="small" onClick={handleBackClick}>
